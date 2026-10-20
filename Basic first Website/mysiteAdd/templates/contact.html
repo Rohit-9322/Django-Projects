@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rohit TextUtils</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 950px;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info {
+            background: #2563eb;
+            color: white;
+            padding: 45px 30px;
+        }
+
+        .contact-info h1 {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .contact-info p {
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #eaf1ff;
+        }
+
+        .info-item {
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            padding: 45px 35px;
+        }
+
+        .contact-form h2 {
+            color: #1e293b;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #334155;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 650px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info, .contact-form {
+                padding: 30px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h1>Get in Touch!</h1>
+
+            <p>
+                Have questions, suggestions, or feedback about
+                Rohit TextUtils? We would love to hear from you.
+            </p>
+
+            <div class="info-item">
+                <strong>💬 Support</strong>
+                <p>Share your questions and suggestions with us.</p>
+            </div>
+
+            <div class="info-item">
+                <strong>✍️ TextUtils</strong>
+                <p>Simple and useful tools for your everyday text editing.</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <p class="subtitle">
+                Fill in the form below to share your message.
+            </p>
+
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message"
+                              placeholder="Write your message here..."
+                              required></textarea>
+                </div>
+
+                <button type="submit" class="send-btn">
+                    Send Message →
+                </button>
+            </form>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
